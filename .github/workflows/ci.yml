@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14, macos-15-intel]
+        python: ["3.13", "3.14"]
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUTF8: "1"
+      CARGO_TERM_COLOR: always
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Toolchain and dependencies
+        run: |
+          rustup toolchain install 1.93.0 --profile minimal --component rustfmt --component clippy
+          python -m pip install uv==0.9.18
+          uv sync --frozen --python "${{ matrix.python }}"
+      - name: Rust checks
+        run: |
+          cargo fmt --all -- --check
+          cargo clippy -p gxw-core --all-targets --locked -- -D warnings
+          cargo test -p gxw-core --locked
+          cargo build -p gxw-core --example inspect --locked
+          cargo build -p gxw-core --example parse --locked
+          cargo build -p gxw-core --example instructions --locked
+          cargo build -p gxw-core --example analysis --locked
+          cargo build -p gxw-core --example simulation --locked
+          cargo build -p gxw-core --example structured --locked
+      - name: Python and binding checks
+        run: |
+          uv run --frozen maturin develop --locked
+          uv run --frozen ruff check src tests/python scripts
+          uv run --frozen ruff format --check src tests/python scripts
+          uv run --frozen python scripts/check_public_docs.py
+          uv run --frozen pytest tests/python
+          uv run --frozen python scripts/check_binding_parity.py --rust-inspect target/debug/examples/inspect${{ runner.os == 'Windows' && '.exe' || '' }} --rust-parse target/debug/examples/parse${{ runner.os == 'Windows' && '.exe' || '' }}
+          uv run --frozen python scripts/check_instruction_parity.py --rust-instructions target/debug/examples/instructions${{ runner.os == 'Windows' && '.exe' || '' }}
+          uv run --frozen python scripts/check_analysis_parity.py --rust-analysis target/debug/examples/analysis${{ runner.os == 'Windows' && '.exe' || '' }}
+          uv run --frozen python scripts/check_simulation_parity.py --rust-simulation target/debug/examples/simulation${{ runner.os == 'Windows' && '.exe' || '' }}
+          uv run --frozen python scripts/check_timing_parity.py --rust-simulation target/debug/examples/simulation${{ runner.os == 'Windows' && '.exe' || '' }}
+          uv run --frozen python scripts/check_structured_parity.py --rust-structured target/debug/examples/structured${{ runner.os == 'Windows' && '.exe' || '' }}
+      - name: Browser display and source selection
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        run: |
+          npm install --prefix "$RUNNER_TEMP/gxw-browser" --no-save --ignore-scripts playwright-core@1.58.2
+          uv run --frozen python scripts/create_ladder_review.py --output "$RUNNER_TEMP/gxw-review" --gxw tests/fixtures/third_party/ladder_converter/FX2N.gxw
+          node scripts/check_ladder_browser.mjs "$RUNNER_TEMP/gxw-review/cases.json" /usr/bin/google-chrome "$RUNNER_TEMP/gxw-browser/node_modules/playwright-core"
+          uv run --frozen python scripts/create_structured_review.py --output "$RUNNER_TEMP/gxw-structured-review"
+          node scripts/check_structured_browser.mjs "$RUNNER_TEMP/gxw-structured-review/structured-cases.json" /usr/bin/google-chrome "$RUNNER_TEMP/gxw-browser/node_modules/playwright-core"
+      - name: Build and verify distributions
+        run: |
+          uv run --frozen maturin build --release --locked --out dist
+          uv run --frozen maturin sdist --out dist
+          uv run --frozen python scripts/check_distribution.py --dist dist
+          uv run --frozen python scripts/check_cold_install.py --dist dist --rust-instructions target/debug/examples/instructions${{ runner.os == 'Windows' && '.exe' || '' }} --rust-analysis target/debug/examples/analysis${{ runner.os == 'Windows' && '.exe' || '' }} --rust-simulation target/debug/examples/simulation${{ runner.os == 'Windows' && '.exe' || '' }}
+      - name: Rebuild source distribution
+        if: matrix.python == '3.13'
+        run: uv run --frozen python scripts/check_sdist_build.py --dist dist

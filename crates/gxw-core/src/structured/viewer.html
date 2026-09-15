@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>GXW structured POU</title><style>body{margin:0;font:14px system-ui;color:#20344c}main{padding:20px;overflow:auto;height:70vh}aside{border-top:1px solid #ddd;padding:16px}pre{white-space:pre-wrap;overflow-wrap:anywhere}svg{background:white}</style>
+<main>{{SVG}}</main><aside><p>Select a node, port or wire to inspect its source. Connections describe geometry; function and FB execution is unresolved.</p><pre id="selection" aria-live="polite"></pre><details><summary>Diagnostics</summary><pre id="diagnostics"></pre></details></aside>
+<script type="application/json" id="gxw-data">{{DATA}}</script><script>
+"use strict";
+const data=JSON.parse(document.getElementById("gxw-data").textContent);
+const records=new Map(data.elements.map(e=>[e.element.id,e]));
+document.getElementById("diagnostics").textContent=JSON.stringify(data.diagnostics,null,2);
+function select(target){const element=target.closest(".item");if(!element)return;
+document.querySelectorAll(".selected").forEach(e=>e.classList.remove("selected"));element.classList.add("selected");
+document.getElementById("selection").textContent=JSON.stringify({sha256:data.sha256,...records.get(element.id)},null,2);}
+document.querySelector("svg").addEventListener("click",e=>select(e.target));
+document.querySelector("svg").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(e.target);}});
+</script></html>

@@ -1,0 +1,12 @@
+/target/
+/dist/
+/.internal/
+# Locally supplied PLC training material; do not redistribute.
+/data/SCHOOL/
+/.venv/
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+.pytest_cache/
+.ruff_cache/

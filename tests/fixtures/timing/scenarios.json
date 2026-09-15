@@ -1,0 +1,1490 @@
+{
+  "provenance": "Authored scan-model expectations, based on JY997D16601R pp.38,41,86,98-100,103-104,215; no native export or captured PLC traces. Timing and reset-order model explicitly specified in docs/timing.md.",
+  "cases": [
+    {
+      "name": "general",
+      "file": "general.csv",
+      "period_ns": 50000000,
+      "phase_ns": 0,
+      "initial": {},
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false,
+                "elapsed_ns": 0
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false,
+                "elapsed_ns": 0
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 1,
+                "done": false,
+                "elapsed_ns": 100000000
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 1,
+                "done": false,
+                "elapsed_ns": 100000000
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 2,
+                "done": true,
+                "elapsed_ns": 200000000
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": true
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 2,
+                "done": true,
+                "elapsed_ns": 200000000
+              }
+            },
+            "outputs": {
+              "Y0": true,
+              "Y1": true
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false,
+                "elapsed_ns": 0
+              }
+            },
+            "outputs": {
+              "Y0": true,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false,
+                "elapsed_ns": 0
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false,
+                "elapsed_ns": 0
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false,
+                "elapsed_ns": 0
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 1,
+                "done": false,
+                "elapsed_ns": 100000000
+              }
+            },
+            "outputs": {
+              "Y0": false,
+              "Y1": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "bases",
+      "file": "bases.csv",
+      "period_ns": 7500000,
+      "phase_ns": 500000,
+      "initial": {},
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 0,
+                "time_base_ns": 10000000,
+                "done": false
+              },
+              "T256": {
+                "value": 0,
+                "time_base_ns": 1000000,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 0,
+                "time_base_ns": 10000000,
+                "done": false
+              },
+              "T256": {
+                "value": 3,
+                "time_base_ns": 1000000,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 1,
+                "time_base_ns": 10000000,
+                "done": false
+              },
+              "T256": {
+                "value": 3,
+                "time_base_ns": 1000000,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 2,
+                "time_base_ns": 10000000,
+                "done": false
+              },
+              "T256": {
+                "value": 3,
+                "time_base_ns": 1000000,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 3,
+                "time_base_ns": 10000000,
+                "done": true
+              },
+              "T256": {
+                "value": 3,
+                "time_base_ns": 1000000,
+                "done": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "retentive",
+      "file": "retentive.csv",
+      "period_ns": 100000000,
+      "phase_ns": 0,
+      "initial": {},
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 0,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 1,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 2,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 2,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 2,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 3,
+                "retentive": true,
+                "done": true,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": true
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 3,
+                "retentive": true,
+                "done": true,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": true
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": true
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 0,
+                "retentive": true,
+                "done": false,
+                "reset_active": true
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 0,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 1,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 2,
+                "retentive": true,
+                "done": false,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T250": {
+                "value": 3,
+                "retentive": true,
+                "done": true,
+                "reset_active": false
+              }
+            },
+            "outputs": {
+              "Y0": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "counter",
+      "file": "counter.csv",
+      "period_ns": 17,
+      "phase_ns": 0,
+      "initial": {},
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 1,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": true
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 1,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 1,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 2,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": true
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 2,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 3,
+                "preset": 3,
+                "retentive": false,
+                "done": true,
+                "rising_edge": true
+              }
+            },
+            "outputs": {
+              "Y0": true
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 3,
+                "preset": 3,
+                "retentive": false,
+                "done": true,
+                "rising_edge": false
+              }
+            },
+            "outputs": {
+              "Y0": true
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 3,
+                "preset": 3,
+                "retentive": false,
+                "done": true,
+                "rising_edge": true
+              }
+            },
+            "outputs": {
+              "Y0": true
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": true
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 0,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 0,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 0,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": false
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C0": {
+                "value": 1,
+                "preset": 3,
+                "retentive": false,
+                "done": false,
+                "rising_edge": true
+              }
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "counter_zero",
+      "file": "counter_zero.csv",
+      "period_ns": 1,
+      "phase_ns": 0,
+      "initial": {},
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C16": {
+                "value": 1,
+                "preset": 0,
+                "retentive": true,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C16": {
+                "value": 1,
+                "preset": 0,
+                "retentive": true,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": true
+          },
+          "expected": {
+            "counters": {
+              "C16": {
+                "value": 0,
+                "preset": 0,
+                "retentive": true,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C16": {
+                "value": 0,
+                "preset": 0,
+                "retentive": true,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "counters": {
+              "C16": {
+                "value": 1,
+                "preset": 0,
+                "retentive": true,
+                "done": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "timer_zero",
+      "file": "timer_zero.csv",
+      "period_ns": 100000000,
+      "phase_ns": 0,
+      "initial": {},
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "preset": 0,
+                "done": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "retention",
+      "file": "retention.csv",
+      "period_ns": 100000000,
+      "phase_ns": 0,
+      "initial": {
+        "M0": true,
+        "M384": true,
+        "M1536": true
+      },
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false
+              },
+              "T250": {
+                "value": 0,
+                "done": false
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 1,
+                "done": false
+              },
+              "C16": {
+                "value": 1,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 1,
+                "done": false
+              },
+              "T250": {
+                "value": 1,
+                "done": false
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 1,
+                "done": false
+              },
+              "C16": {
+                "value": 1,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "stop",
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false
+              },
+              "T250": {
+                "value": 1,
+                "done": false
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 0,
+                "done": false
+              },
+              "C16": {
+                "value": 1,
+                "done": false
+              }
+            },
+            "running": false,
+            "time_ns": 200000000,
+            "scan": 2,
+            "devices": {
+              "X0": false,
+              "Y0": false,
+              "M0": false,
+              "M384": true,
+              "M1536": false
+            },
+            "outputs": {
+              "Y0": false
+            }
+          }
+        },
+        {
+          "op": "advance_stopped",
+          "elapsed_ns": 900000000,
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false
+              },
+              "T250": {
+                "value": 1,
+                "done": false
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 0,
+                "done": false
+              },
+              "C16": {
+                "value": 1,
+                "done": false
+              }
+            },
+            "running": false,
+            "time_ns": 1100000000,
+            "scan": 2
+          }
+        },
+        {
+          "op": "start",
+          "expected": {
+            "running": true,
+            "time_ns": 1100000000,
+            "scan": 2
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false
+              },
+              "T250": {
+                "value": 1,
+                "done": false
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 1,
+                "done": false
+              },
+              "C16": {
+                "value": 1,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 1,
+                "done": false
+              },
+              "T250": {
+                "value": 2,
+                "done": true
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 1,
+                "done": false
+              },
+              "C16": {
+                "value": 1,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": false
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false
+              },
+              "T250": {
+                "value": 2,
+                "done": true
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 1,
+                "done": false
+              },
+              "C16": {
+                "value": 1,
+                "done": false
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false
+              },
+              "T250": {
+                "value": 2,
+                "done": true
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 2,
+                "done": true
+              },
+              "C16": {
+                "value": 2,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "reset",
+          "expected": {
+            "timers": {
+              "T0": {
+                "value": 0,
+                "done": false
+              },
+              "T250": {
+                "value": 0,
+                "done": false
+              }
+            },
+            "counters": {
+              "C0": {
+                "value": 0,
+                "done": false
+              },
+              "C16": {
+                "value": 0,
+                "done": false
+              }
+            },
+            "running": true,
+            "scan": 0,
+            "time_ns": 0,
+            "devices": {
+              "X0": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "changing_period",
+      "file": "bases.csv",
+      "period_ns": 7500000,
+      "phase_ns": 500000,
+      "initial": {},
+      "actions": [
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "time_ns": 7500000,
+            "timers": {
+              "T200": {
+                "value": 0
+              },
+              "T256": {
+                "value": 0
+              }
+            }
+          }
+        },
+        {
+          "op": "period",
+          "period_ns": 2500000,
+          "expected": {
+            "scan_period_ns": 2500000,
+            "time_ns": 7500000
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 0,
+                "done": false
+              },
+              "T256": {
+                "value": 3,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 1,
+                "done": false
+              },
+              "T256": {
+                "value": 3,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "period",
+          "period_ns": 20000000,
+          "expected": {
+            "scan_period_ns": 20000000,
+            "time_ns": 12500000
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 1,
+                "done": false
+              },
+              "T256": {
+                "value": 3,
+                "done": true
+              }
+            }
+          }
+        },
+        {
+          "op": "step",
+          "inputs": {
+            "X0": true
+          },
+          "expected": {
+            "timers": {
+              "T200": {
+                "value": 3,
+                "done": true
+              },
+              "T256": {
+                "value": 3,
+                "done": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

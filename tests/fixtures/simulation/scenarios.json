@@ -1,0 +1,352 @@
+{
+  "provenance": "Hand-authored simulation inputs and independent expected states; not native GX Works2 exports or hardware/Simulator2 captures. END added to printed excerpts, steps synthetic. No manufacturer images or manual text reproduced.",
+  "cases": [
+    {
+      "name": "self_hold",
+      "sequence": "LD X0;OR Y0;ANI X1;OUT Y0;END",
+      "oracle": "Independent recurrence: new_Y0 = (X0 or previous_Y0) and not X1.",
+      "initial": {},
+      "steps": [
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": true
+          },
+          "expected": {
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": true
+          },
+          "expected": {
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "Y0": false
+          }
+        }
+      ],
+      "file": "self_hold.csv"
+    },
+    {
+      "name": "double_coil",
+      "sequence": "LD X1;OUT Y3;LD Y3;OUT Y4;LD X2;OUT Y3;END",
+      "oracle": "Manual printed p170: the latter coil controls external Y3, but Y4 reads the first Y3 image.",
+      "manual": "https://www.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf",
+      "printed_page": 170,
+      "initial": {},
+      "steps": [
+        {
+          "inputs": {
+            "X1": true,
+            "X2": false
+          },
+          "expected": {
+            "Y3": false,
+            "Y4": true
+          }
+        },
+        {
+          "inputs": {
+            "X1": false,
+            "X2": true
+          },
+          "expected": {
+            "Y3": true,
+            "Y4": false
+          }
+        },
+        {
+          "inputs": {
+            "X1": true,
+            "X2": true
+          },
+          "expected": {
+            "Y3": true,
+            "Y4": true
+          }
+        },
+        {
+          "inputs": {
+            "X1": false,
+            "X2": false
+          },
+          "expected": {
+            "Y3": false,
+            "Y4": false
+          }
+        }
+      ],
+      "file": "double_coil.csv"
+    },
+    {
+      "name": "set_reset",
+      "sequence": "LD X0;SET Y0;LD X1;RST Y0;END",
+      "oracle": "Manual printed p215: SET holds, RST holds; the last activated instruction determines the bit.",
+      "manual": "https://www.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf",
+      "printed_page": 215,
+      "initial": {},
+      "steps": [
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": true
+          },
+          "expected": {
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "Y0": false
+          }
+        }
+      ],
+      "file": "set_reset.csv"
+    },
+    {
+      "name": "reset_set",
+      "sequence": "LD X1;RST Y0;LD X0;SET Y0;END",
+      "oracle": "Own reversed-order variant of the SET/RST rule.",
+      "manual": "https://www.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf",
+      "printed_page": 215,
+      "initial": {
+        "Y0": true
+      },
+      "steps": [
+        {
+          "inputs": {
+            "X0": true,
+            "X1": true
+          },
+          "expected": {
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false
+          },
+          "expected": {
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": true
+          },
+          "expected": {
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": false
+          },
+          "expected": {
+            "Y0": true
+          }
+        }
+      ],
+      "file": "reset_set.csv"
+    },
+    {
+      "name": "saved_read",
+      "sequence": "LD M0;MPS;RST M0;MPP;OUT Y0;LD M0;OUT Y1;END",
+      "oracle": "Own saved-result case: MPP restores the original M0 read, while the later LD observes the cleared M0.",
+      "manual": "https://www.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf",
+      "printed_page": 202,
+      "initial": {
+        "M0": true
+      },
+      "steps": [
+        {
+          "inputs": {},
+          "expected": {
+            "M0": false,
+            "Y0": true,
+            "Y1": false
+          }
+        },
+        {
+          "inputs": {},
+          "expected": {
+            "M0": false,
+            "Y0": false,
+            "Y1": false
+          }
+        }
+      ],
+      "file": "saved_read.csv"
+    },
+    {
+      "name": "cascade_after_write",
+      "sequence": "LD X0;OUT M0;LD X1;OR X2;ANB;OUT Y0;END",
+      "oracle": "Own variant of the cascade pattern on printed p203. M0=X0; Y0=X0 and (X1 or X2).",
+      "manual": "https://www.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf",
+      "printed_page": 203,
+      "initial": {},
+      "steps": [
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false,
+            "X2": false
+          },
+          "expected": {
+            "M0": false,
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": false,
+            "X2": false
+          },
+          "expected": {
+            "M0": true,
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": true,
+            "X2": false
+          },
+          "expected": {
+            "M0": false,
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": true,
+            "X2": false
+          },
+          "expected": {
+            "M0": true,
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": false,
+            "X2": true
+          },
+          "expected": {
+            "M0": false,
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": false,
+            "X2": true
+          },
+          "expected": {
+            "M0": true,
+            "Y0": true
+          }
+        },
+        {
+          "inputs": {
+            "X0": false,
+            "X1": true,
+            "X2": true
+          },
+          "expected": {
+            "M0": false,
+            "Y0": false
+          }
+        },
+        {
+          "inputs": {
+            "X0": true,
+            "X1": true,
+            "X2": true
+          },
+          "expected": {
+            "M0": true,
+            "Y0": true
+          }
+        }
+      ],
+      "file": "cascade_after_write.csv"
+    }
+  ]
+}

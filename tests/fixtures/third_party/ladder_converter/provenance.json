@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/ito-soft-design/ladder_converter",
+  "revision": "f3b26efdfdbf3554a62ef35d86544ccc5628552e",
+  "source_paths": {
+    "FX2N.gxw": "test/files/src/FX2N.gxw",
+    "MAIN.csv": "test/files/src/MAIN.csv",
+    "LICENSE.txt": "LICENSE.txt"
+  },
+  "sha256": {
+    "FX2N.gxw": "466ea0789934a878d07121810e7360403bc48abf1b97fb56c5509bdc7362b93e",
+    "MAIN.csv": "61841e2ed000a94daa1ba279a707561ea8e517f5c361b34e069efaf17bdb16a3",
+    "LICENSE.txt": "4468324088e32710c49ed1f2d36eb8bcf862138979c1d5f5b98c04f96d319035"
+  },
+  "provenance": "Publisher documents GX Works2 CSV export and supplies this paired FX2N project. Export was not rerun locally. This pair is calibration evidence, not an independent holdout."
+}

@@ -1,0 +1,1423 @@
+[
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "X000"
+    ],
+    "offset": 79,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "Y000"
+    ],
+    "offset": 86,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDI",
+    "operands": [
+      "X001"
+    ],
+    "offset": 93,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "Y001"
+    ],
+    "offset": 100,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M10"
+    ],
+    "offset": 107,
+    "length": 7
+  },
+  {
+    "mnemonic": "AND",
+    "operands": [
+      "M11"
+    ],
+    "offset": 114,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M1000"
+    ],
+    "offset": 121,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M10"
+    ],
+    "offset": 129,
+    "length": 7
+  },
+  {
+    "mnemonic": "ANI",
+    "operands": [
+      "M11"
+    ],
+    "offset": 136,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M1001"
+    ],
+    "offset": 143,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M10"
+    ],
+    "offset": 151,
+    "length": 7
+  },
+  {
+    "mnemonic": "OR",
+    "operands": [
+      "M11"
+    ],
+    "offset": 158,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M1002"
+    ],
+    "offset": 165,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M10"
+    ],
+    "offset": 173,
+    "length": 7
+  },
+  {
+    "mnemonic": "ORI",
+    "operands": [
+      "M11"
+    ],
+    "offset": 180,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M1003"
+    ],
+    "offset": 187,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M10"
+    ],
+    "offset": 195,
+    "length": 7
+  },
+  {
+    "mnemonic": "OR",
+    "operands": [
+      "M11"
+    ],
+    "offset": 202,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M12"
+    ],
+    "offset": 209,
+    "length": 7
+  },
+  {
+    "mnemonic": "OR",
+    "operands": [
+      "M13"
+    ],
+    "offset": 216,
+    "length": 7
+  },
+  {
+    "mnemonic": "ANB",
+    "operands": [],
+    "offset": 223,
+    "length": 3
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M1004"
+    ],
+    "offset": 226,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M10"
+    ],
+    "offset": 234,
+    "length": 7
+  },
+  {
+    "mnemonic": "AND",
+    "operands": [
+      "M11"
+    ],
+    "offset": 241,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M12"
+    ],
+    "offset": 248,
+    "length": 7
+  },
+  {
+    "mnemonic": "AND",
+    "operands": [
+      "M13"
+    ],
+    "offset": 255,
+    "length": 7
+  },
+  {
+    "mnemonic": "ORB",
+    "operands": [],
+    "offset": 262,
+    "length": 3
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M1005"
+    ],
+    "offset": 265,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M100"
+    ],
+    "offset": 273,
+    "length": 7
+  },
+  {
+    "mnemonic": "PLS",
+    "operands": [
+      "M1006"
+    ],
+    "offset": 280,
+    "length": 9
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M100"
+    ],
+    "offset": 289,
+    "length": 7
+  },
+  {
+    "mnemonic": "PLF",
+    "operands": [
+      "M1007"
+    ],
+    "offset": 296,
+    "length": 9
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M101"
+    ],
+    "offset": 305,
+    "length": 7
+  },
+  {
+    "mnemonic": "SET",
+    "operands": [
+      "M1008"
+    ],
+    "offset": 312,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M102"
+    ],
+    "offset": 320,
+    "length": 7
+  },
+  {
+    "mnemonic": "RST",
+    "operands": [
+      "M1008"
+    ],
+    "offset": 327,
+    "length": 8
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M100"
+    ],
+    "offset": 335,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M200"
+    ],
+    "offset": 342,
+    "length": 7
+  },
+  {
+    "mnemonic": "MPS",
+    "operands": [],
+    "offset": 349,
+    "length": 3
+  },
+  {
+    "mnemonic": "AND",
+    "operands": [
+      "M101"
+    ],
+    "offset": 352,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M201"
+    ],
+    "offset": 359,
+    "length": 7
+  },
+  {
+    "mnemonic": "MRD",
+    "operands": [],
+    "offset": 366,
+    "length": 3
+  },
+  {
+    "mnemonic": "AND",
+    "operands": [
+      "M102"
+    ],
+    "offset": 369,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M202"
+    ],
+    "offset": 376,
+    "length": 7
+  },
+  {
+    "mnemonic": "MPP",
+    "operands": [],
+    "offset": 383,
+    "length": 3
+  },
+  {
+    "mnemonic": "AND",
+    "operands": [
+      "M103"
+    ],
+    "offset": 386,
+    "length": 7
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M203"
+    ],
+    "offset": 393,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDP",
+    "operands": [
+      "M110"
+    ],
+    "offset": 400,
+    "length": 8
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M210"
+    ],
+    "offset": 408,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDF",
+    "operands": [
+      "M110"
+    ],
+    "offset": 415,
+    "length": 8
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M211"
+    ],
+    "offset": 423,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M110"
+    ],
+    "offset": 430,
+    "length": 7
+  },
+  {
+    "mnemonic": "ANDP",
+    "operands": [
+      "M111"
+    ],
+    "offset": 437,
+    "length": 8
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M212"
+    ],
+    "offset": 445,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M110"
+    ],
+    "offset": 452,
+    "length": 7
+  },
+  {
+    "mnemonic": "ANDF",
+    "operands": [
+      "M111"
+    ],
+    "offset": 459,
+    "length": 8
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M213"
+    ],
+    "offset": 467,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M110"
+    ],
+    "offset": 474,
+    "length": 7
+  },
+  {
+    "mnemonic": "ORP",
+    "operands": [
+      "M111"
+    ],
+    "offset": 481,
+    "length": 8
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M214"
+    ],
+    "offset": 489,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M110"
+    ],
+    "offset": 496,
+    "length": 7
+  },
+  {
+    "mnemonic": "ORF",
+    "operands": [
+      "M111"
+    ],
+    "offset": 503,
+    "length": 8
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M215"
+    ],
+    "offset": 511,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M120"
+    ],
+    "offset": 518,
+    "length": 7
+  },
+  {
+    "mnemonic": "MOV",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 525,
+    "length": 13
+  },
+  {
+    "mnemonic": "ADD",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 538,
+    "length": 17
+  },
+  {
+    "mnemonic": "SUB",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 555,
+    "length": 17
+  },
+  {
+    "mnemonic": "MUL",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 572,
+    "length": 17
+  },
+  {
+    "mnemonic": "DIV",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 589,
+    "length": 17
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M120"
+    ],
+    "offset": 606,
+    "length": 7
+  },
+  {
+    "mnemonic": "MOVP",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 613,
+    "length": 14
+  },
+  {
+    "mnemonic": "ADDP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 627,
+    "length": 18
+  },
+  {
+    "mnemonic": "SUBP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 645,
+    "length": 18
+  },
+  {
+    "mnemonic": "MULP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 663,
+    "length": 18
+  },
+  {
+    "mnemonic": "DIVP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 681,
+    "length": 18
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M120"
+    ],
+    "offset": 699,
+    "length": 7
+  },
+  {
+    "mnemonic": "DMOV",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 706,
+    "length": 13
+  },
+  {
+    "mnemonic": "DADD",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 719,
+    "length": 17
+  },
+  {
+    "mnemonic": "DSUB",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 736,
+    "length": 17
+  },
+  {
+    "mnemonic": "DMUL",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 753,
+    "length": 17
+  },
+  {
+    "mnemonic": "DDIV",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 770,
+    "length": 17
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M120"
+    ],
+    "offset": 787,
+    "length": 7
+  },
+  {
+    "mnemonic": "DMOVP",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 794,
+    "length": 14
+  },
+  {
+    "mnemonic": "DADDP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 808,
+    "length": 18
+  },
+  {
+    "mnemonic": "DSUBP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 826,
+    "length": 18
+  },
+  {
+    "mnemonic": "DMULP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 844,
+    "length": 18
+  },
+  {
+    "mnemonic": "DDIVP",
+    "operands": [
+      "D0",
+      "K1",
+      "D0"
+    ],
+    "offset": 862,
+    "length": 18
+  },
+  {
+    "mnemonic": "LD=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 880,
+    "length": 14
+  },
+  {
+    "mnemonic": "OR=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 894,
+    "length": 14
+  },
+  {
+    "mnemonic": "AND=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 908,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M220"
+    ],
+    "offset": 922,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD<>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 929,
+    "length": 14
+  },
+  {
+    "mnemonic": "OR<>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 943,
+    "length": 14
+  },
+  {
+    "mnemonic": "AND<>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 957,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M221"
+    ],
+    "offset": 971,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD<",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 978,
+    "length": 14
+  },
+  {
+    "mnemonic": "OR<",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 992,
+    "length": 14
+  },
+  {
+    "mnemonic": "AND<",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1006,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M222"
+    ],
+    "offset": 1020,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1027,
+    "length": 14
+  },
+  {
+    "mnemonic": "OR>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1041,
+    "length": 14
+  },
+  {
+    "mnemonic": "AND>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1055,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M223"
+    ],
+    "offset": 1069,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD<=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1076,
+    "length": 14
+  },
+  {
+    "mnemonic": "OR<=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1090,
+    "length": 14
+  },
+  {
+    "mnemonic": "AND<=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1104,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M224"
+    ],
+    "offset": 1118,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD>=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1125,
+    "length": 14
+  },
+  {
+    "mnemonic": "OR>=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1139,
+    "length": 14
+  },
+  {
+    "mnemonic": "AND>=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1153,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M225"
+    ],
+    "offset": 1167,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDD=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1174,
+    "length": 14
+  },
+  {
+    "mnemonic": "ORD=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1188,
+    "length": 14
+  },
+  {
+    "mnemonic": "ANDD=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1202,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M226"
+    ],
+    "offset": 1216,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDD<>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1223,
+    "length": 14
+  },
+  {
+    "mnemonic": "ORD<>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1237,
+    "length": 14
+  },
+  {
+    "mnemonic": "ANDD<>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1251,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M227"
+    ],
+    "offset": 1265,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDD<",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1272,
+    "length": 14
+  },
+  {
+    "mnemonic": "ORD<",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1286,
+    "length": 14
+  },
+  {
+    "mnemonic": "ANDD<",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1300,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M228"
+    ],
+    "offset": 1314,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDD>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1321,
+    "length": 14
+  },
+  {
+    "mnemonic": "ORD>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1335,
+    "length": 14
+  },
+  {
+    "mnemonic": "ANDD>",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1349,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M229"
+    ],
+    "offset": 1363,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDD<=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1370,
+    "length": 14
+  },
+  {
+    "mnemonic": "ORD<=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1384,
+    "length": 14
+  },
+  {
+    "mnemonic": "ANDD<=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1398,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M230"
+    ],
+    "offset": 1412,
+    "length": 7
+  },
+  {
+    "mnemonic": "LDD>=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1419,
+    "length": 14
+  },
+  {
+    "mnemonic": "ORD>=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1433,
+    "length": 14
+  },
+  {
+    "mnemonic": "ANDD>=",
+    "operands": [
+      "K0",
+      "D0"
+    ],
+    "offset": 1447,
+    "length": 14
+  },
+  {
+    "mnemonic": "OUT",
+    "operands": [
+      "M231"
+    ],
+    "offset": 1461,
+    "length": 7
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M121"
+    ],
+    "offset": 1468,
+    "length": 7
+  },
+  {
+    "mnemonic": "WAND",
+    "operands": [
+      "D0",
+      "H1234",
+      "D0"
+    ],
+    "offset": 1475,
+    "length": 18
+  },
+  {
+    "mnemonic": "WOR",
+    "operands": [
+      "D0",
+      "H1234",
+      "D0"
+    ],
+    "offset": 1493,
+    "length": 18
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M122"
+    ],
+    "offset": 1511,
+    "length": 7
+  },
+  {
+    "mnemonic": "INC",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1518,
+    "length": 9
+  },
+  {
+    "mnemonic": "DEC",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1527,
+    "length": 9
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M122"
+    ],
+    "offset": 1536,
+    "length": 7
+  },
+  {
+    "mnemonic": "INCP",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1543,
+    "length": 10
+  },
+  {
+    "mnemonic": "DECP",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1553,
+    "length": 10
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M122"
+    ],
+    "offset": 1563,
+    "length": 7
+  },
+  {
+    "mnemonic": "DINC",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1570,
+    "length": 9
+  },
+  {
+    "mnemonic": "DDEC",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1579,
+    "length": 9
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M122"
+    ],
+    "offset": 1588,
+    "length": 7
+  },
+  {
+    "mnemonic": "DINCP",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1595,
+    "length": 10
+  },
+  {
+    "mnemonic": "DDECP",
+    "operands": [
+      "D0"
+    ],
+    "offset": 1605,
+    "length": 10
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M8000"
+    ],
+    "offset": 1615,
+    "length": 8
+  },
+  {
+    "mnemonic": "CJ",
+    "operands": [
+      "P1"
+    ],
+    "offset": 1623,
+    "length": 9
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M123"
+    ],
+    "offset": 1632,
+    "length": 7
+  },
+  {
+    "mnemonic": "CALL",
+    "operands": [
+      "P0"
+    ],
+    "offset": 1639,
+    "length": 9
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M130"
+    ],
+    "offset": 1648,
+    "length": 7
+  },
+  {
+    "mnemonic": "FMOV",
+    "operands": [
+      "D110",
+      "D120",
+      "K10"
+    ],
+    "offset": 1655,
+    "length": 17
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M131"
+    ],
+    "offset": 1672,
+    "length": 7
+  },
+  {
+    "mnemonic": "BMOV",
+    "operands": [
+      "D110",
+      "D120",
+      "K10"
+    ],
+    "offset": 1679,
+    "length": 17
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M132"
+    ],
+    "offset": 1696,
+    "length": 7
+  },
+  {
+    "mnemonic": "MOV",
+    "operands": [
+      "K2X000",
+      "D100"
+    ],
+    "offset": 1703,
+    "length": 17
+  },
+  {
+    "mnemonic": "LD",
+    "operands": [
+      "M133"
+    ],
+    "offset": 1720,
+    "length": 7
+  },
+  {
+    "mnemonic": "MOV",
+    "operands": [
+      "K0",
+      "Z0"
+    ],
+    "offset": 1727,
+    "length": 13
+  },
+  {
+    "mnemonic": "MOV",
+    "operands": [
+      "D100Z0",
+      "D101"
+    ],
+    "offset": 1740,
+    "length": 17
+  },
+  {
+    "mnemonic": "FOR",
+    "operands": [
+      "K1"
+    ],
+    "offset": 1757,
+    "length": 9
+  },
+  {
+    "mnemonic": "NEXT",
+    "operands": [],
+    "offset": 1766,
+    "length": 5
+  },
+  {
+    "mnemonic": "P1",
+    "operands": [],
+    "offset": 1771,
+    "length": 7
+  },
+  {
+    "mnemonic": "FEND",
+    "operands": [],
+    "offset": 1778,
+    "length": 3
+  },
+  {
+    "mnemonic": "P0",
+    "operands": [],
+    "offset": 1781,
+    "length": 7
+  },
+  {
+    "mnemonic": "SRET",
+    "operands": [],
+    "offset": 1788,
+    "length": 5
+  },
+  {
+    "mnemonic": "END",
+    "operands": [],
+    "offset": 1793,
+    "length": 3
+  }
+]

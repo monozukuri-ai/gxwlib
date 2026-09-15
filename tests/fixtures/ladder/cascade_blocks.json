@@ -1,0 +1,117 @@
+{
+  "manual": "https://www.mitsubishielectric.com/dl/fa/document/manual/plc_fx/jy997d16601/jy997d16601r.pdf",
+  "printed_page": "203",
+  "provenance": "Test input and expected paths transcribed from the published circuit diagram. Not a native GX Works2 CSV export. END added where the printed excerpt omits it; step numbering is synthetic.",
+  "outputs": [
+    {
+      "instruction": 5,
+      "device": "Y0",
+      "paths": [
+        [
+          [
+            0,
+            false
+          ],
+          [
+            2,
+            false
+          ]
+        ],
+        [
+          [
+            0,
+            false
+          ],
+          [
+            3,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": 13,
+      "device": "Y1",
+      "paths": [
+        [
+          [
+            0,
+            false
+          ],
+          [
+            7,
+            false
+          ],
+          [
+            8,
+            false
+          ]
+        ],
+        [
+          [
+            0,
+            false
+          ],
+          [
+            9,
+            false
+          ],
+          [
+            10,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": 16,
+      "device": "Y2",
+      "paths": [
+        [
+          [
+            0,
+            false
+          ],
+          [
+            15,
+            false
+          ]
+        ]
+      ]
+    },
+    {
+      "instruction": 20,
+      "device": "Y3",
+      "paths": [
+        [
+          [
+            0,
+            false
+          ],
+          [
+            15,
+            false
+          ],
+          [
+            17,
+            false
+          ]
+        ],
+        [
+          [
+            0,
+            false
+          ],
+          [
+            15,
+            false
+          ],
+          [
+            18,
+            false
+          ]
+        ]
+      ]
+    }
+  ]
+}
