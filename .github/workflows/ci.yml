@@ -2,8 +2,10 @@ name: CI
 
 on:
   push:
+    branches: ["**"]
   pull_request:
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
@@ -23,10 +25,10 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: ${{ matrix.python }}
       - name: Toolchain and dependencies
@@ -48,10 +50,10 @@ jobs:
       - name: Python and binding checks
         run: |
           uv run --frozen maturin develop --locked
-          uv run --frozen ruff check src tests/python scripts
-          uv run --frozen ruff format --check src tests/python scripts
+          uv run --frozen ruff check src tests scripts
+          uv run --frozen ruff format --check src tests scripts
           uv run --frozen python scripts/check_public_docs.py
-          uv run --frozen pytest tests/python
+          uv run --frozen pytest tests/python tests/scripts
           uv run --frozen python scripts/check_binding_parity.py --rust-inspect target/debug/examples/inspect${{ runner.os == 'Windows' && '.exe' || '' }} --rust-parse target/debug/examples/parse${{ runner.os == 'Windows' && '.exe' || '' }}
           uv run --frozen python scripts/check_instruction_parity.py --rust-instructions target/debug/examples/instructions${{ runner.os == 'Windows' && '.exe' || '' }}
           uv run --frozen python scripts/check_analysis_parity.py --rust-analysis target/debug/examples/analysis${{ runner.os == 'Windows' && '.exe' || '' }}

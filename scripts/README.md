@@ -14,6 +14,7 @@ package CLI.
 | `create_ladder_review.py`, `create_structured_review.py` | Generate browser cases in a selected output directory |
 | `check_ladder_browser.mjs`, `check_structured_browser.mjs` | Check display and source selection with Chrome and Playwright Core |
 | `check_distribution.py` | Check archive contents, versions, licenses, wheel RECORD and private-path Git exclusions |
+| `check_release.py` | Check the release tag, locked versions, four-platform wheel set and SHA256SUMS |
 | `check_cold_install.py`, `smoke_installed.py` | Install a wheel into a fresh environment and exercise the package |
 | `check_sdist_build.py` | Rebuild and test a wheel from a source distribution |
 | `collect_licenses.py` | Refresh notices for dependencies in Cargo.lock |

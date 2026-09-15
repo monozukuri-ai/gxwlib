@@ -1,0 +1,197 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONUTF8: "1"
+  CARGO_TERM_COLOR: always
+
+jobs:
+  prepare:
+    name: Validate version and build sdist
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.13"
+      - name: Check tag and locked versions
+        env:
+          RELEASE_TAG: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+        run: python scripts/check_release.py --tag "$RELEASE_TAG"
+      - name: Build source distribution
+        run: |
+          rustup toolchain install 1.93.0 --profile minimal
+          python -m pip install maturin==1.11.5
+          python -m maturin sdist --out dist
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: release-build-sdist
+          path: dist/*.tar.gz
+          if-no-files-found: error
+          retention-days: 14
+
+  checks:
+    name: Full CI
+    needs: prepare
+    uses: ./.github/workflows/ci.yml
+
+  wheels:
+    name: Wheel (${{ matrix.target }})
+    needs: prepare
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+          - os: macos-14
+            target: aarch64-apple-darwin
+          - os: macos-15-intel
+            target: x86_64-apple-darwin
+    env:
+      MACOSX_DEPLOYMENT_TARGET: "11.0"
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.13"
+      - name: Install build tools
+        run: |
+          rustup toolchain install 1.93.0 --profile minimal
+          python -m pip install maturin==1.11.5
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: release-build-sdist
+          path: dist
+      - name: Build wheel
+        uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b # v1
+        with:
+          command: build
+          maturin-version: "1.11.5"
+          rust-toolchain: "1.93.0"
+          target: ${{ matrix.target }}
+          manylinux: "2_28"
+          args: --release --locked --out dist --interpreter ${{ runner.os == 'Linux' && 'python3.13' || 'python' }}
+      - name: Verify contents and install on CPython 3.13
+        run: |
+          python scripts/check_distribution.py --dist dist
+          python scripts/check_cold_install.py --dist dist
+      - name: Rebuild the release sdist and test the resulting wheel
+        if: runner.os == 'Linux'
+        run: python scripts/check_sdist_build.py --dist dist
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.14"
+      - name: Install the same wheel on CPython 3.14
+        run: python scripts/check_cold_install.py --dist dist
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: release-build-${{ matrix.target }}
+          path: dist/*.whl
+          if-no-files-found: error
+          retention-days: 14
+
+  verify:
+    name: Verify the complete release bundle
+    needs: [prepare, checks, wheels]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.13"
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          pattern: release-build-*
+          merge-multiple: true
+          path: release/dist
+      - name: Check all four wheels and the source distribution
+        run: |
+          python scripts/check_distribution.py --dist release/dist
+          python scripts/check_release.py --dist release/dist --checksums release/SHA256SUMS
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: release-bundle
+          path: release/
+          if-no-files-found: error
+          retention-days: 30
+
+  pypi:
+    name: Publish to PyPI
+    needs: verify
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: pypi
+      url: https://pypi.org/p/gxwlib
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: release-bundle
+          path: release
+      - name: Check downloaded hashes
+        working-directory: release/dist
+        run: sha256sum --check ../SHA256SUMS
+      - name: Publish verified distributions with Trusted Publishing
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
+        with:
+          packages-dir: release/dist
+          skip-existing: true
+
+  github-release:
+    name: Publish GitHub Release assets
+    needs: [verify, pypi]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: release-bundle
+          path: release
+      - name: Check downloaded hashes
+        working-directory: release/dist
+        run: sha256sum --check ../SHA256SUMS
+      - name: Attach the verified bundle and publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --verify-tag --draft --title "$RELEASE_TAG" --generate-notes
+          fi
+          gh release upload "$RELEASE_TAG" release/dist/*.whl release/dist/*.tar.gz release/SHA256SUMS --clobber
+          gh release edit "$RELEASE_TAG" --draft=false
