@@ -72,6 +72,8 @@ def main():
                 arguments.append(str(csv_path))
             if command != "render":
                 arguments.append("--json")
+            else:
+                arguments.extend(["--format", "svg"])
             result = subprocess.run(arguments, check=True, capture_output=True, encoding="utf-8")
             if command == "analyze":
                 assert json.loads(result.stdout) == json.loads(report.to_json())

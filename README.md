@@ -48,8 +48,13 @@ For structured POUs, use `decode_structured(project, index)` and
 ```sh
 gxw inspect project.gxw --json
 gxw analyze project.gxw --device-profile fx --json
+gxw render project.gxw --device-profile fx
 gxw render project.gxw --device-profile fx --format html --output ladder.html
 ```
+
+Without `--output` or `--format`, `render` starts a local viewer and opens a
+browser. Use `--no-browser` to open the printed URL yourself, `--port 8000` to
+choose a port, and Ctrl+C to stop. `render-structured` uses the same options.
 
 See [inspection](docs/inspection.md), [instruction decoding](docs/instructions.md),
 [analysis and display](docs/analysis.md), [structured POUs](docs/structured.md), and

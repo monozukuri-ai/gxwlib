@@ -75,6 +75,7 @@ large view coordinates are rejected separately. Resource limits raise
 ```sh
 gxw structured project.gxw --program-index 0 --json
 gxw declarations project.gxw --logical-index 1 --json
+gxw render-structured project.gxw
 gxw render-structured project.gxw --format html --output view.html
 cargo run -p gxw-core --example structured -- pou project.gxw 0
 ```
@@ -82,6 +83,12 @@ cargo run -p gxw-core --example structured -- pou project.gxw 0
 CLI exit status: 0 for complete structural decoding, 3 for retained partial
 structure, 1 for errors. A successful exit does not imply executable semantics.
 `render-structured` refuses to overwrite the input, including aliases/hard links.
+
+Without `--format` or `--output`, `render-structured` starts a local HTML viewer
+and opens the browser. It accepts `--port` and `--no-browser` just like
+[`render`](analysis.md#cli-and-limits); stop it with Ctrl+C to return the decoding
+status. `--format svg` or `--format html` exports to stdout and exits. `--output`
+writes a file and exits, using SVG unless HTML is explicitly selected.
 
 ## CPU profiles
 

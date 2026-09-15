@@ -136,20 +136,41 @@ execution equivalence of projects or their parameters.
 
 ```sh
 gxw analyze project.gxw --device-profile fx --program 0 --external-write M100 --json
+gxw render project.gxw --device-profile fx
+gxw render project.gxw --device-profile fx --port 8000 --no-browser
 gxw render project.gxw --device-profile fx --format html --output ladder.html
 gxw render MAIN.csv --input-format csv --device-profile fx --output ladder.svg
+gxw render MAIN.csv --input-format csv --device-profile fx --format svg
 gxw diff old.gxw new.csv --right-format csv --device-profile fx --json
 ```
 
 The input format defaults to GXW. CSV must be selected with `--input-format csv`;
 `--right-format` defaults to the left format. `--program`/`--right-program` select
-zero-based POU indices (CSV requires zero). Render defaults to SVG on stdout;
-`--output` creates a file and `--force` permits replacing an existing output.
-Overwriting the input itself is rejected.
+zero-based POU indices (CSV requires zero).
+
+Without `--output` or `--format`, `render` starts a viewer on `127.0.0.1`, prints
+its URL and opens the default browser. The default port is chosen automatically;
+`--port 8000` selects a fixed port and `--port 0` requests an available one.
+`--no-browser` prints the URL without launching a browser. Stop the server with
+Ctrl+C. If browser launch fails, the server remains available at the printed URL.
+An unavailable fixed port produces an error.
+
+The server serves only the generated HTML, including its embedded source
+previews. It does not serve the input file or working directory. The view is a
+snapshot of the selected program; restart the command after changing the input.
+It uses Python's standard library and requires no additional runtime packages.
+
+`--format svg` or `--format html` writes to stdout and exits. `--output` writes
+a file and exits, using SVG unless `--format html` is also specified. `--force`
+permits replacing an existing output. Overwriting the input itself is rejected.
+`--port` and `--no-browser` apply only when serving, and cannot be combined with
+`--output` or `--format`. Scripts that previously read default SVG from stdout
+should now pass `--format svg` explicitly.
 
 Exit codes: 0 complete success/equal diff; 1 input/resource/output error;
 2 command-line usage error; 3 partial result; 4 complete diff with changes.
-A partial render still emits its annotated SVG/HTML.
+A partial render still displays or exports its annotated SVG/HTML. In viewer
+mode, the complete/partial exit status is returned after Ctrl+C stops the server.
 
 `AnalysisOptions` defaults to 100,000 instructions, an 8-result block stack and
 an 11-result MPS stack. Completed output results may roll out of the block stack

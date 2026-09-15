@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from . import decode_declarations, decode_structured, load_project, render_structured
+from . import decode_declarations, decode_structured, load_project, render_structured, viewer
 
 COMMANDS = {"structured", "declarations", "render-structured"}
 
@@ -16,13 +16,15 @@ def register(sub):
         else:
             p.add_argument("--program-index", type=int, default=0)
         if name == "render-structured":
-            p.add_argument("--format", choices=["svg", "html"], default="svg")
-            p.add_argument("--output", type=Path)
+            p.add_argument("--format", choices=["svg", "html"], help="export to stdout or --output")
+            p.add_argument("--output", type=Path, help="write a file (default format: SVG)")
+            viewer.register_options(p)
         else:
             p.add_argument("--json", action="store_true")
 
 
 def run(args):
+    serving = viewer.wants_server(args) if args.command == "render-structured" else False
     project = load_project(args.path)
     if args.command == "declarations":
         result = decode_declarations(project, args.logical_index)
@@ -30,6 +32,9 @@ def run(args):
         result = decode_structured(project, args.program_index)
     if args.command == "render-structured":
         doc = render_structured(result)
+        if serving:
+            viewer.serve_html(doc.to_html(), port=args.port or 0, open_browser=not args.no_browser)
+            return 0 if result.structure_complete else 3
         text = doc.to_html() if args.format == "html" else doc.svg
         if args.output:
             # A read-only command must not replace its source project.

@@ -176,6 +176,14 @@ def test_analysis_render_diff_cli_exit_codes_and_input_preservation(tmp_path):
     assert (
         cli("analyze", partial, "--input-format", "csv", "--device-profile", "fx").returncode == 3
     )
-    assert cli("render", partial, "--input-format", "csv", "--device-profile", "fx").returncode == 3
-    assert cli("render", FIXTURES / "raw.gxw", "--device-profile", "fx").returncode == 3
+    assert (
+        cli(
+            "render", partial, "--input-format", "csv", "--device-profile", "fx", "--format", "svg"
+        ).returncode
+        == 3
+    )
+    assert (
+        cli("render", FIXTURES / "raw.gxw", "--device-profile", "fx", "--format", "svg").returncode
+        == 3
+    )
     assert cli("render", tmp_path / "missing.gxw", "--device-profile", "fx").returncode == 1

@@ -10,6 +10,7 @@ from . import (
     load_csv,
     load_project,
     render_ladder,
+    viewer,
 )
 
 COMMANDS = {"analyze", "render", "diff"}
@@ -18,7 +19,7 @@ COMMANDS = {"analyze", "render", "diff"}
 def register(sub):
     for name, description in [
         ("analyze", "list device reads/writes and structural diagnostics"),
-        ("render", "reconstruct ladder as SVG or interactive standalone HTML"),
+        ("render", "open a local ladder viewer or export SVG/HTML"),
         ("diff", "compare normalized instruction sequences"),
     ]:
         command = sub.add_parser(name, help=description)
@@ -32,11 +33,16 @@ def register(sub):
             command.add_argument("--external-write", action="append", default=[], metavar="DEVICE")
             command.add_argument("--no-inputs-external", action="store_true")
         if name == "render":
-            command.add_argument("--format", choices=["svg", "html"], default="svg")
-            command.add_argument("--output", type=Path, help="write a new file (default: stdout)")
+            command.add_argument(
+                "--format", choices=["svg", "html"], help="export to stdout or --output"
+            )
+            command.add_argument(
+                "--output", type=Path, help="write a new file (default format: SVG)"
+            )
             command.add_argument("--force", action="store_true", help="replace an existing output")
             command.add_argument("--max-elements", type=int, default=20_000)
             command.add_argument("--max-output-bytes", type=int, default=16_777_216)
+            viewer.register_options(command)
         if name == "diff":
             command.add_argument("right")
             command.add_argument(
@@ -57,6 +63,7 @@ def load_instructions(path, file_format, index, profile):
 
 
 def run(args):
+    serving = viewer.wants_server(args) if args.command == "render" else False
     program = load_instructions(args.path, args.input_format, args.program, args.device_profile)
     if args.command == "diff":
         if args.max_cells < 0:
@@ -108,6 +115,11 @@ def run(args):
             max_elements=args.max_elements,
             max_output_bytes=args.max_output_bytes,
         )
+        if serving:
+            viewer.serve_html(
+                result.to_html(), port=args.port or 0, open_browser=not args.no_browser
+            )
+            return 0 if result.complete else 3
         text = result.to_html() if args.format == "html" else result.svg
         if args.output:
             source = Path(args.path).resolve()

@@ -59,6 +59,7 @@ def check_wheel(path, version, notices, root):
             "analysis_cli.py",
             "simulation_cli.py",
             "structured_cli.py",
+            "viewer.py",
             "__main__.py",
             "_core.pyi",
             "py.typed",
